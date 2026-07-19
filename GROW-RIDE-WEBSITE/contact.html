@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | GROW RIDE</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM & REUSABLE GLOBAL STYLES
+           ========================================================================== */
+        :root {
+            --primary-blue: #0A3D91;
+            --emerald-green: #16A34A;
+            --gold-accent: #F4B400;
+            --white: #FFFFFF;
+            --background: #F8FAFC;
+            --dark-text: #0F172A;
+            --light-text: #475569;
+            --border-color: #E2E8F0;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            --glass: rgba(255, 255, 255, 0.75);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Structure */
+        .section-padding {
+            padding: 100px 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Section Typography Headers */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-tag {
+            color: var(--emerald-green);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Elements / Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #083075;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--emerald-green);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background-color: #117d37;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Navigation Header */
+        .nav-placeholder {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--emerald-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Scroll Animation Base Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Grid System Framework */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 48px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        /* Card Frameworks */
+        .premium-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(10, 61, 145, 0.2);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background-color: rgba(10, 61, 145, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark-text);
+        }
+
+        .card-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+            word-break: break-all;
+        }
+
+        /* ==========================================================================
+           2. SECTION SPECIFIC COMPONENT STYLES
+           ========================================================================== */
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+            padding: 80px 24px 120px 24px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 440px;
+            background: linear-gradient(45deg, #1E293B, #0F172A);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        /* Contact Form Layout */
+        .form-wrapper {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            background-color: var(--background);
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--dark-text);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--primary-blue);
+            background-color: var(--white);
+            box-shadow: 0 0 0 4px rgba(10, 61, 145, 0.08);
+        }
+
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            margin-top: 2px;
+            accent-color: var(--primary-blue);
+        }
+
+        .checkbox-text {
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        /* Form Feedback Banner states */
+        .form-feedback {
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin-bottom: 24px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-feedback.success {
+            display: block;
+            background-color: rgba(22, 163, 74, 0.1);
+            color: #15803d;
+            border: 1px solid rgba(22, 163, 74, 0.2);
+        }
+
+        .form-feedback.error {
+            display: block;
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #b91c1c;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        /* WhatsApp Support Banner */
+        .whatsapp-banner {
+            background: linear-gradient(135deg, #DCFCE7 0%, #F0FDF4 100%);
+            border: 1px solid rgba(22, 163, 74, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .whatsapp-banner-content h3 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #14532d;
+            margin-bottom: 12px;
+        }
+
+        .whatsapp-banner-content p {
+            font-size: 1.15rem;
+            color: #166534;
+            max-width: 600px;
+        }
+
+        /* Accordion FAQ Component */
+        .faq-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+            padding: 0 24px;
+            color: var(--light-text);
+        }
+
+        .faq-item.active {
+            border-color: rgba(10, 61, 145, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item.active .faq-panel {
+            max-height: 1000px;
+            transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+            padding-bottom: 24px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Call To Action Banner */
+        .cta-section {
+            background: linear-gradient(rgba(10, 61, 145, 0.92), rgba(10, 61, 145, 0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/></svg>');
+            color: var(--white);
+            text-align: center;
+            border-radius: var(--radius-lg);
+            padding: 80px 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn-group {
+            justify-content: center;
+        }
+
+        /* Premium Footer Layout */
+        .footer-main {
+            background-color: #0F172A;
+            color: #94A3B8;
+            padding: 80px 24px 40px 24px;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--emerald-green);
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Back to top Utility link wrapper */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            font-weight: bold;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==========================================================================
+           3. RESPONSIVE DESIGN MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.75rem;
+            }
+            .hero-content .btn-group {
+                justify-content: center;
+            }
+            .section-padding {
+                padding: 60px 20px;
+            }
+            .whatsapp-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 24px;
+                gap: 28px;
+            }
+            .whatsapp-banner .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .form-wrapper {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .cta-section .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .cta-section .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="nav-placeholder">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GROW <span>RIDE</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="riders.html">Rider Program</a></li>
+                <li><a href="maintenance.html">Safety</a></li>
+                <li><a href="contact.html" style="color: var(--primary-blue); font-weight: 700;">Contact</a></li>
+                <li><a href="partners.html" class="btn btn-primary" style="padding: 8px 16px; color: white;">Invest</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Contact GROW RIDE</h1>
+                <p>Have questions about motorcycle investment, becoming a rider, partnerships, or our services? Our team is ready to assist you.</p>
+                <div class="btn-group">
+                    <a href="https://wa.me/971523447739" target="_blank" class="btn btn-accent">Chat on WhatsApp</a>
+                    <a href="tel:+237679590967" class="btn btn-secondary">Call Us</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-placeholder">
+                    <div>
+                        <span style="font-size: 4rem; display:block; margin-bottom: 16px;">🏢</span>
+                        <p style="font-weight: 600; padding: 0 20px;">[ Premium Image: Professional Business Communication & Support Workspace ]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Contact Information Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Direct Contact Channels</h2>
+                <p class="section-desc">Reach out directly through any of our certified regional channels. We aim to follow up on client tracking inquiries within one business day window.</p>
+            </div>
+            <div class="grid-4">
+                <div class="premium-card reveal">
+                    <div>
+                        <div class="card-icon">📞</div>
+                        <h3 class="card-title">Phone</h3>
+                        <p class="card-value">+237 679 590 967</p>
+                    </div>
+                    <a href="tel:+237679590967" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Call Now</a>
+                </div>
+                <div class="premium-card reveal">
+                    <div>
+                        <div class="card-icon" style="background-color: rgba(22, 163, 74, 0.06); color: var(--emerald-green);">💬</div>
+                        <h3 class="card-title">WhatsApp</h3>
+                        <p class="card-value">+971 52 344 7739</p>
+                    </div>
+                    <a href="https://wa.me/971523447739" target="_blank" class="btn btn-accent" style="padding: 10px 20px; font-size: 0.9rem;">Chat on WhatsApp</a>
+                </div>
+                <div class="premium-card reveal">
+                    <div>
+                        <div class="card-icon">✉️</div>
+                        <h3 class="card-title">Email</h3>
+                        <p class="card-value">growride@gmail.com</p>
+                    </div>
+                    <a href="mailto:growride@gmail.com" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem;">Send Email</a>
+                </div>
+                <div class="premium-card reveal">
+                    <div>
+                        <div class="card-icon">🌐</div>
+                        <h3 class="card-title">Website</h3>
+                        <p class="card-value">www.growride.com</p>
+                    </div>
+                    <a href="index.html" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.9rem; pointer-events: none; opacity: 0.6;">Primary Domain</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Contact Form & Brief Intro Section -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container grid-2">
+            <div class="reveal" style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="section-tag">Let's Connect</span>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 24px;">Send Us a Message Securely</h2>
+                <p class="section-desc" style="margin-bottom: 24px;">GROW RIDE is a Cameroon-based motorcycle investment and mobility company. We connect investors with responsible commercial motorcycle riders through our Balance & Own programme.</p>
+                <p class="section-desc" style="margin-bottom: 32px;">We support riders through professional training, defensive driving education, safety standards, and motorcycle maintenance while helping investors protect their assets through professional management.</p>
+                <div style="background-color: var(--background); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+                    <h4 style="font-weight: 700; color: var(--primary-blue); margin-bottom: 8px;">📍 Office Headquarters</h4>
+                    <p style="color: var(--light-text); font-weight: 500;">Coming Soon</p>
+                </div>
+            </div>
+
+            <div class="form-wrapper reveal">
+                <div id="formFeedback" class="form-feedback"></div>
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-input" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" class="form-input" required placeholder="+237 6xx xxx xxx">
+                        </div>
+                        <div class="form-group class full-width">
+                            <label class="form-label" for="emailAddress">Email Address</label>
+                            <input type="email" id="emailAddress" class="form-input" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-input" required placeholder="How can we help?">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reason">Select Reason</label>
+                            <select id="reason" class="form-select" required>
+                                <option value="" disabled selected>Choose option...</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Investor Opportunity">Investor Opportunity</option>
+                                <option value="Rider Application">Rider Application</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Support">Support</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="form-label" for="message">Message</label>
+                            <textarea id="message" class="form-textarea" required placeholder="Write your message here detailing your request..."></textarea>
+                        </div>
+                    </div>
+
+                    <label class="checkbox-group">
+                        <input type="checkbox" id="agreement" required>
+                        <span class="checkbox-text">I agree that GROW RIDE can contact me regarding my request.</span>
+                    </label>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. WhatsApp Quick Support Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="whatsapp-banner reveal">
+                <div class="whatsapp-banner-content">
+                    <h3>Need a Quick Answer?</h3>
+                    <p>Chat directly with the GROW RIDE team through WhatsApp for faster support regarding asset matching, rules updates, or active route tracking protocols.</p>
+                </div>
+                <a href="https://wa.me/971523447739" target="_blank" class="btn btn-accent" style="padding: 16px 36px; white-space: nowrap;">Start WhatsApp Chat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Frequently Asked Questions Section (Accordion) -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Common Inquiry Support</h2>
+                <p class="section-desc">Quick answers to immediate foundational questions regarding corporate asset allocations and applicant rules parameters.</p>
+            </div>
+            
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How can I become a GROW RIDE rider?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Applicants can submit data through our digital portals or visit physical asset intake vetting depots during operating clearance hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How can I invest with GROW RIDE?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Investors can review complete program terms on our dedicated Partner Portal or fill out the contact form above selecting "Investor Opportunity" to review operational terms sheets.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Where does GROW RIDE operate?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>GROW RIDE operations are strictly centered within strategic commercial zones across Cameroon, with network scaling processes continuously rolling out additional locations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How can I contact customer support?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Immediate communication is accessible via our dedicated WhatsApp quick bridge link or by direct email logging mechanisms available 24 hours a day.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Can I partner with GROW RIDE?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Yes, corporate partnership requests are highly encouraged. Choose the "Partnership" field selector item within the structured digital secure form above.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How do I learn more about the Balance & Own programme?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Our specialized structural lease path system details are highlighted clearly on the Rider Program page, detailing vehicle asset ownership paths.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Social Media Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Social Channels</span>
+                <h2 class="section-title">Follow Our Journey</h2>
+                <p class="section-desc">Stay constantly updated with structural project expansions, field event timelines, and system upgrade notifications via our digital communities.</p>
+            </div>
+            <div class="grid-4">
+                <a href="#" class="premium-card reveal" style="text-decoration: none; text-align: center; align-items: center;">
+                    <div class="card-icon" style="margin-bottom: 16px;">📘</div>
+                    <h4 class="card-title" style="margin-bottom: 4px;">Facebook</h4>
+                    <span style="font-size: 0.85rem; color: var(--light-text);">Follow @GrowRide</span>
+                </a>
+                <a href="#" class="premium-card reveal" style="text-decoration: none; text-align: center; align-items: center;">
+                    <div class="card-icon" style="margin-bottom: 16px; background-color: rgba(244, 180, 0, 0.06); color: var(--gold-accent);">📸</div>
+                    <h4 class="card-title" style="margin-bottom: 4px;">Instagram</h4>
+                    <span style="font-size: 0.85rem; color: var(--light-text);">Follow @GrowRide</span>
+                </a>
+                <a href="#" class="premium-card reveal" style="text-decoration: none; text-align: center; align-items: center;">
+                    <div class="card-icon" style="margin-bottom: 16px;">💼</div>
+                    <h4 class="card-title" style="margin-bottom: 4px;">LinkedIn</h4>
+                    <span style="font-size: 0.85rem; color: var(--light-text);">Connect GROW RIDE</span>
+                </a>
+                <a href="https://wa.me/971523447739" target="_blank" class="premium-card reveal" style="text-decoration: none; text-align: center; align-items: center;">
+                    <div class="card-icon" style="margin-bottom: 16px; background-color: rgba(22, 163, 74, 0.06); color: var(--emerald-green);">💬</div>
+                    <h4 class="card-title" style="margin-bottom: 4px;">WhatsApp</h4>
+                    <span style="font-size: 0.85rem; color: var(--light-text);">Broadcast Channel</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Final Call To Action Section -->
+    <section class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="cta-section reveal">
+                <h2>Let's Build the Future of Mobility Together</h2>
+                <p>Whether you want to invest, become a rider, or partner with us, GROW RIDE is ready to connect with you.</p>
+                <div class="btn-group">
+                    <a href="partners.html" class="btn btn-accent" style="background-color: var(--white); color: var(--primary-blue);">Become an Investor</a>
+                    <a href="riders.html" class="btn btn-primary" style="background-color: var(--gold-accent); color: var(--dark-text);">Become a Rider</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Premium Footer -->
+    <footer class="footer-main">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>GROW <span>RIDE</span></h3>
+                <p style="margin-top: 16px;">Premium motorcycle mobility investment frameworks built alongside high-level modern structural safety guarantees.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Platform Options</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="riders.html">Riders</a></li>
+                    <li><a href="#">Rider Academy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Asset Investment</h4>
+                <ul class="footer-links">
+                    <li><a href="partners.html">Investors</a></li>
+                    <li><a href="maintenance.html">Safety & Maintenance</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Legal Governance</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Social Media</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 GROW RIDE. All rights and operational titles reserved globally.</p>
+            <p>Designed with absolute structural focus.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- ==========================================================================
+       4. VANILLA JAVASCRIPT LOGIC COMPONENTS
+       ========================================================================== */ -->
+    <script>
+        // --- A. Scroll Reveal Animation Engine ---
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const triggerBottom = window.innerHeight * 0.85;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if(elementTop < triggerBottom) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // --- B. Accordion FAQ Component Event Handlers ---
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const trigger = item.querySelector('.faq-trigger');
+            trigger.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                
+                // Close all other open items first
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                // Toggle clicked element structure state
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- C. Premium Form Processing Client-Side Controller ---
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const feedbackBanner = document.getElementById('formFeedback');
+            const targetForm = document.getElementById('contactForm');
+            
+            // Collect Form Inputs
+            const fullName = document.getElementById('fullName').value.trim();
+            const phoneNumber = document.getElementById('phoneNumber').value.trim();
+            const emailAddress = document.getElementById('emailAddress').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const reason = document.getElementById('reason').value;
+            const message = document.getElementById('message').value.trim();
+            const agreement = document.getElementById('agreement').checked;
+
+            // Simple validation guard structure
+            if(!fullName || !phoneNumber || !emailAddress || !subject || !reason || !message || !agreement) {
+                feedbackBanner.className = "form-feedback error";
+                feedbackBanner.innerText = "Error: Please check that all form parameter inputs and agreements are correctly verified.";
+                return;
+            }
+
+            // Simulating successful dispatch pipeline execution
+            feedbackBanner.className = "form-feedback success";
+            feedbackBanner.innerText = "Thank you for contacting GROW RIDE. Our team will review your message and respond as soon as possible.";
+            
+            // Reset form entry fields
+            targetForm.reset();
+            
+            // Auto scroll smoothly up towards text feedback window frame location
+            feedbackBanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // --- D. Back-to-Top Indicator Handler ---
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | GROW RIDE - Motorcycle Investment & Mobility Platform</title>
+    <meta name="description" content="Learn how GROW RIDE connects investors with responsible motorcycle riders in Cameroon through our Balance & Own program to build wealth and community.">
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Elements for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Embedded CSS Styling -->
+    <style>
+        :root {
+            --primary-blue: #0A3D91;
+            --emerald-green: #16A34A;
+            --gold-accent: #F4B400;
+            --white: #FFFFFF;
+            --background: #F8FAFC;
+            --dark-text: #0F172A;
+            --light-text: #475569;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --card-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 16px;
+            --radius-md: 12px;
+        }
+
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+
+        body {
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Layout Utilities */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .bg-light { background-color: #F1F5F9; }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #031B44 100%);
+        }
+
+        .text-center { text-align: center; }
+        .text-white { color: var(--white); }
+        .text-white-trans { color: rgba(255, 255, 255, 0.75); }
+        .items-center { align-items: center; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .margin-bottom-lg { margin-bottom: 56px; }
+        .margin-bottom-sm { margin-bottom: 16px; }
+        .margin-y-sm { margin-top: 16px; margin-bottom: 16px; }
+        .max-w-md { max-width: 650px; }
+        .relative { position: relative; }
+
+        /* Grid Configurations */
+        .grid {
+            display: grid;
+            gap: 32px;
+        }
+        .grid-2-col { grid-template-columns: 1fr; }
+        .grid-3-col { grid-template-columns: 1fr; }
+        .grid-4-col { grid-template-columns: 1fr; }
+
+        @media (min-width: 768px) {
+            .grid-2-col { grid-template-columns: repeat(2, 1fr); }
+            .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+            .grid-4-col { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-4-col { grid-template-columns: repeat(4, 1fr); }
+            .gap-xl { gap: 64px; }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--dark-text);
+        }
+
+        h1 { font-size: 2.75rem; font-weight: 800; letter-spacing: -0.02em; }
+        h2 { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 20px; }
+        h3 { font-size: 1.75rem; margin-bottom: 16px; }
+        h4 { font-size: 1.25rem; margin-bottom: 10px; }
+        p { color: var(--light-text); margin-bottom: 16px; font-size: 1rem; }
+        .text-large { font-size: 1.2rem; line-height: 1.5; color: var(--dark-text); font-weight: 500; }
+        .lead { font-size: 1.25rem; line-height: 1.6; max-width: 700px; }
+        .text-white h2, .text-white h3, .text-white h4, .text-white p { color: var(--white); }
+
+        /* UI Components */
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: rgba(10, 61, 145, 0.08);
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 30px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .bg-white-trans {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--primary-blue);
+            letter-spacing: -0.02em;
+        }
+        .logo span { color: var(--emerald-green); }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-lg { padding: 16px 36px; font-size: 1.05rem; }
+        .btn-primary { background-color: var(--primary-blue); color: var(--white); }
+        .btn-primary:hover { background-color: #062863; transform: translateY(-2px); }
+        .btn-secondary { background-color: var(--emerald-green); color: var(--white); }
+        .btn-secondary:hover { background-color: #0f7634; transform: translateY(-2px); }
+
+        /* Navigation Bar */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(15, 23, 26, 0.06);
+            display: flex;
+            align-items: center;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            margin-right: 32px;
+            transition: var(--transition-smooth);
+            font-size: 0.95rem;
+        }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--primary-blue); font-weight: 600; }
+        .nav-actions { display: flex; align-items: center; }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            width: 100%;
+            height: 2.5px;
+            background-color: var(--dark-text);
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0 100px 0;
+            color: var(--white);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 61, 145, 0.85), rgba(15, 23, 42, 0.9));
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; }
+        .hero-content h1 { color: var(--white); margin-top: 16px; }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .breadcrumb a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition-smooth); }
+        .breadcrumb a:hover { color: var(--gold-accent); }
+        .breadcrumb .separator { font-size: 0.75rem; margin: 0 8px; color: rgba(255, 255, 255, 0.4); }
+
+        /* General Cards Layout */
+        .card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(15, 23, 42, 0.03);
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.08); }
+
+        /* Images formatting */
+        .image-wrapper img { width: 100%; height: auto; object-fit: cover; display: block; }
+        .rounded-lg { border-radius: var(--radius-lg); }
+        .img-responsive { max-width: 100%; height: auto; }
+
+        /* Glassmorphism System */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            color: var(--white);
+        }
+        .icon-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--white);
+        }
+        .bg-blue { background-color: var(--primary-blue); }
+        .bg-green { background-color: var(--emerald-green); }
+
+        /* Values Styling */
+        .value-card { padding: 24px; }
+        .value-icon { font-size: 2rem; margin-bottom: 16px; display: inline-block; }
+
+        /* What Makes Us Different */
+        .feature-card .feature-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .feature-card .feature-head i { font-size: 1.25rem; }
+        .feature-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+        /* Impact Section (Counters) */
+        .counter-box { padding: 16px; }
+        .counter-number { font-size: 3rem; font-weight: 800; color: var(--gold-accent); letter-spacing: -0.02em; margin-bottom: 4px; }
+        .counter-number::after { content: '+'; font-size: 2rem; color: var(--white); vertical-align: super; margin-left: 2px; }
+        .counter-label { font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+
+        /* Founder Showcase Layout */
+        .founder-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+        }
+        .founder-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+            .founder-grid {
+                grid-template-columns: 2.5fr 3.5fr;
+            }
+        }
+        .founder-img-container {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .founder-img-container::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(22, 163, 74, 0.15) 0%, transparent 70%);
+            top: -25%; left: -25%;
+        }
+        .founder-avatar-placeholder {
+            z-index: 2;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.15);
+        }
+        .founder-avatar-placeholder i {
+            font-size: 6.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            margin-bottom: 12px;
+        }
+        .founder-avatar-placeholder span {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--gold-accent);
+            font-weight: 700;
+        }
+        .founder-details {
+            padding: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .founder-title h3 {
+            font-size: 2rem;
+            color: var(--dark-text);
+            margin-bottom: 4px;
+        }
+        .founder-title .subtitle {
+            color: var(--emerald-green);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+            display: inline-block;
+        }
+        .quote-block {
+            position: relative;
+        }
+        .quote-block i.quote-icon {
+            font-size: 2.5rem;
+            color: rgba(22, 163, 74, 0.12);
+            position: absolute;
+            top: -24px;
+            left: -12px;
+            z-index: 1;
+        }
+        .quote-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--dark-text);
+            font-weight: 500;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+        .quote-signature {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            border-top: 1px solid #E2E8F0;
+            padding-top: 16px;
+        }
+
+        /* Why People Trust Us */
+        .trust-list { list-style: none; }
+        .trust-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+        .trust-list li i { font-size: 1.35rem; color: var(--emerald-green); margin-top: 3px; }
+
+        /* Final Call to Action */
+        .cta-section {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+        }
+        .cta-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(10, 61, 145, 0.9), rgba(22, 163, 74, 0.85));
+        }
+        .cta-content h2 { color: var(--white); font-size: 2.5rem; margin-bottom: 16px; }
+        .cta-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+
+        /* Footer System */
+        .main-footer { background-color: #0F172A; padding: 80px 0 30px 0; color: var(--white); border-top: 4px solid var(--emerald-green); }
+        .footer-grid { display: grid; gap: 48px; grid-template-columns: 1fr; margin-bottom: 48px; }
+
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+        }
+        .footer-brand .logo { font-size: 1.75rem; }
+        .social-links { display: flex; gap: 12px; margin-top: 20px; }
+        .social-links a {
+            width: 40px; height: 40px; background-color: rgba(255, 255, 255, 0.05); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: var(--white);
+            text-decoration: none; transition: var(--transition-smooth);
+        }
+        .social-links a:hover { background-color: var(--primary-blue); color: var(--white); transform: translateY(-2px); }
+        .footer-links h6, .footer-newsletter h6 { color: var(--white); font-size: 1.1rem; margin-bottom: 24px; font-weight: 600; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 12px; }
+        .footer-links ul li a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: var(--transition-smooth); font-size: 0.95rem; }
+        .footer-links ul li a:hover { color: var(--gold-accent); padding-left: 4px; }
+        .newsletter-form { display: flex; gap: 8px; margin-top: 16px; }
+        .newsletter-form input {
+            flex: 1; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05); color: var(--white); font-family: inherit; font-size: 0.95rem;
+        }
+        .newsletter-form input:focus { outline: 2px solid var(--primary-blue); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 30px; font-size: 0.9rem; }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed; bottom: 32px; right: 32px; width: 48px; height: 48px;
+            background-color: var(--primary-blue); color: var(--white); border: none;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; visibility: hidden; z-index: 99; transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { background-color: var(--emerald-green); transform: translateY(-3px); }
+
+        /* Scroll Reveal Engine States */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.15s; }
+
+        /* Responsive Mobile Configurations */
+        @media (max-width: 768px) {
+            .hidden-mobile { display: none !important; }
+            .hamburger { display: flex; }
+            
+            .nav-menu {
+                position: fixed; top: 80px; left: -100%; width: 100%; height: calc(100vh - 80px);
+                background-color: var(--white); display: flex; flex-direction: column;
+                padding: 40px 24px; gap: 24px; transition: var(--transition-smooth); z-index: 999;
+                box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            }
+            .nav-menu.open { left: 0; }
+            .nav-menu a { margin-right: 0; font-size: 1.2rem; width: 100%; }
+            .nav-cta-mobile { margin-top: 20px; width: 100%; }
+            .nav-cta-mobile .btn { width: 100%; }
+            
+            .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+            .hamburger.open span:nth-child(2) { opacity: 0; }
+            .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            
+            .order-2-mobile { order: 2; }
+            .section { padding: 60px 0; }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            .glass-card { padding: 24px; }
+            .founder-details { padding: 32px 24px; }
+        }
+
+        @media (min-width: 480px) and (max-width: 1023px) {
+            .md-grid-6-col { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .md-grid-6-col { grid-template-columns: repeat(6, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                GROW<span>RIDE</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About Us</a>
+                <a href="#investors">Investors</a>
+                <a href="#riders">Riders</a>
+                <a href="#academy">Academy</a>
+                <a href="#contact">Contact</a>
+                <div class="nav-cta-mobile">
+                    <a href="#invest" class="btn btn-primary">Get Started</a>
+                </div>
+            </nav>
+            <div class="nav-actions">
+                <a href="#invest" class="btn btn-primary hidden-mobile">Get Started</a>
+                <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right separator"></i> <span aria-current="page">About Us</span>
+            </nav>
+            <h1 class="reveal">About GROW RIDE</h1>
+            <p class="lead reveal delay-1">Learn who we are, why we started, and how we are creating opportunities for investors, riders, and communities.</p>
+        </div>
+    </section>
+
+    <main>
+        <!-- 2. Who We Are -->
+        <section class="section bg-light">
+            <div class="container grid grid-2-col items-center">
+                <div class="reveal">
+                    <span class="badge">Who We Are</span>
+                    <h2 class="section-title">More Than a Leasing Company</h2>
+                    <p class="text-large">GROW RIDE is a professionally managed mobility company that connects investors with hardworking riders across Cameroon.</p>
+                    <p>We are not just handing out keys. We operate a complete ecosystem. We help investors grow their wealth with total confidence while guiding responsible riders to become independent motorcycle owners through honest, dignified work.</p>
+                </div>
+                <div class="image-wrapper card-shadow reveal delay-1">
+                    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=800" alt="GROW RIDE Rider Team" class="img-responsive rounded-lg" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Our Story -->
+        <section class="section">
+            <div class="container grid grid-2-col items-center image-left">
+                <div class="image-wrapper card-shadow reveal order-2-mobile">
+                    <img src="https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&q=80&w=800" alt="Motorcycles in Cameroon" class="img-responsive rounded-lg" loading="lazy">
+                </div>
+                <div class="reveal delay-1">
+                    <span class="badge">Our Story</span>
+                    <h2 class="section-title">Bridging the Gap to Prosperity</h2>
+                    <p>In Cameroon, thousands of honest, hardworking individuals have the skills to earn a living as commercial riders, but they face a major barrier: they cannot afford to buy their own motorcycles. High rental fees keep them trapped in a cycle of low earnings.</p>
+                    <p>At the same time, many investors want to put their capital into productive assets like local transport, but they simply do not have the time or tools to recruit riders, handle daily management, or protect their assets.</p>
+                    <p><strong>GROW RIDE was born to solve both problems.</strong> We built a system where everyone wins. We handle the recruitment, the training, the daily management, and the maintenance, ensuring a secure path to asset ownership for riders and passive earnings for investors.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 & 5. Mission & Vision -->
+        <section class="section bg-gradient text-white">
+            <div class="container grid grid-2-col gap-xl">
+                <div class="glass-card reveal">
+                    <div class="icon-circle bg-green"><i class="fa-solid fa-bullseye"></i></div>
+                    <h3>Our Mission</h3>
+                    <p>To build a trusted motorcycle investment platform that creates sustainable jobs, supports responsible riders, protects investor assets, and improves road safety and transportation across Cameroon.</p>
+                </div>
+                <div class="glass-card reveal delay-1">
+                    <div class="icon-circle bg-blue"><i class="fa-solid fa-eye"></i></div>
+                    <h3>Our Vision</h3>
+                    <p>To become Cameroon’s most trusted motorcycle investment and mobility company, creating lifelong economic opportunities for thousands of riders and investors while building stronger, safer communities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Our Core Values -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="text-center max-w-md margin-bottom-lg">
+                    <span class="badge">What Drives Us</span>
+                    <h2 class="section-title">Our Core Values</h2>
+                    <p>These principles guide every decision we make, every rider we train, and every partnership we protect.</p>
+                </div>
+                <div class="grid grid-4-col gap-md">
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-shield-halved value-icon" style="color: var(--primary-blue);"></i>
+                        <h4>Integrity</h4>
+                        <p>We are completely honest and transparent with investors and riders alike.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-helmet-safety value-icon" style="color: var(--emerald-green);"></i>
+                        <h4>Safety</h4>
+                        <p>We value human life above all. Defensive driving is our top priority.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-briefcase value-icon" style="color: var(--gold-accent);"></i>
+                        <h4>Professionalism</h4>
+                        <p>We set high standards for our riders, our staff, and our operations.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-handshake-angle value-icon" style="color: var(--primary-blue);"></i>
+                        <h4>Respect</h4>
+                        <p>We honor the hard work of our riders and the trust of our investors.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-chart-line value-icon" style="color: var(--emerald-green);"></i>
+                        <h4>Accountability</h4>
+                        <p>We take full responsibility for vehicle tracking, payments, and care.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-people-group value-icon" style="color: var(--gold-accent);"></i>
+                        <h4>Teamwork</h4>
+                        <p>Investors, riders, and our management crew win when we work together.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-house-chimney-window value-icon" style="color: var(--primary-blue);"></i>
+                        <h4>Community</h4>
+                        <p>We build up local economies and support families across Cameroon.</p>
+                    </div>
+                    <div class="card value-card text-center reveal">
+                        <i class="fa-solid fa-award value-icon" style="color: var(--emerald-green);"></i>
+                        <h4>Excellence</h4>
+                        <p>We continuously refine our platform to deliver elite operational results.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. What Makes Us Different -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center max-w-md margin-bottom-lg">
+                    <span class="badge">The GROW RIDE Advantage</span>
+                    <h2 class="section-title">What Makes Us Different</h2>
+                    <p>We don't simply manage contracts; we manage a robust, reliable operational blueprint built for safety and success.</p>
+                </div>
+                <div class="grid grid-3-col gap-lg">
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-user-check" style="color: var(--primary-blue);"></i> <h4>Professional Recruitment</h4></div>
+                        <p>We carefully vet and background-check every single applicant before they join our fleet, ensuring only trustworthy personnel handle your assets.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-graduation-cap" style="color: var(--emerald-green);"></i> <h4>Rider Academy Training</h4></div>
+                        <p>Every rider undergoes rigorous customer service, local law compliance, and operations training at our dedicated Academy.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-road" style="color: var(--gold-accent);"></i> <h4>Defensive Driving Education</h4></div>
+                        <p>We heavily focus on hazard awareness and collision avoidance to drastically reduce road incidents and protect lives.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-capsules" style="color: var(--primary-blue);"></i> <h4>Drug-Free Rider Policy</h4></div>
+                        <p>Zero tolerance. Continuous screening ensures our riders are fully alert, reliable, and completely responsible on the road.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-wrench" style="color: var(--emerald-green);"></i> <h4>Routine Maintenance</h4></div>
+                        <p>We perform systematic mechanical inspections and repairs, prolonging the resale and productive life of every motorcycle asset.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-lock" style="color: var(--gold-accent);"></i> <h4>Investor Asset Protection</h4></div>
+                        <p>Every motorcycle is outfitted with real-time GPS tracking and comprehensive coverage options to limit investment risk.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-chart-line" style="color: var(--primary-blue);"></i> <h4>Transparent Management</h4></div>
+                        <p>Track your portfolio, weekly collections, and contract milestones through simplified dashboards with no hidden fees.</p>
+                    </div>
+                    <div class="card feature-card reveal">
+                        <div class="feature-head"><i class="fa-solid fa-headset" style="color: var(--emerald-green);"></i> <h4>Excellent Customer Support</h4></div>
+                        <p>Our operational hotlines are always open to resolve field emergencies for riders and answer questions for asset owners.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Our Impact -->
+        <section class="section bg-gradient text-white text-center">
+            <div class="container">
+                <div class="max-w-md margin-bottom-lg mx-auto">
+                    <span class="badge bg-white-trans">Real Performance</span>
+                    <h2 class="section-title text-white">Our Impact in Cameroon</h2>
+                    <p class="text-white-trans">Numbers don't lie. We are actively creating wealth and improving transit safety.</p>
+                </div>
+                <div class="grid grid-3-col md-grid-6-col gap-lg" id="counterSection">
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="1500">0</div>
+                        <div class="counter-label">Riders Trained</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="850">0</div>
+                        <div class="counter-label">Motorcycles Managed</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="420">0</div>
+                        <div class="counter-label">Investors Served</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="2000">0</div>
+                        <div class="counter-label">Jobs Created</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="15">0</div>
+                        <div class="counter-label">Communities Reached</div>
+                    </div>
+                    <div class="counter-box">
+                        <div class="counter-number" data-target="75000">0</div>
+                        <div class="counter-label">Trips Completed</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Founder Showcase Section -->
+        <section class="section bg-light">
+            <div class="container">
+                <div class="text-center max-w-md margin-bottom-lg">
+                    <span class="badge">The Leadership</span>
+                    <h2 class="section-title">Message From Our Founder</h2>
+                    <p>The vision and driving force behind Cameroon's premium transport mobility framework.</p>
+                </div>
+                
+                <div class="founder-card reveal">
+                    <div class="founder-grid">
+                        <!-- Rectangular Image Placeholder -->
+                        <div class="founder-img-container">
+                            <div class="founder-avatar-placeholder">
+                                <i class="fa-solid fa-user-tie"></i>
+                                <span>Kelvin Ngwa</span>
+                            </div>
+                        </div>
+                        <!-- Catchy Founder Message Details -->
+                        <div class="founder-details">
+                            <div class="founder-title">
+                                <h3>Kelvin Ngwa</h3>
+                                <span class="subtitle">Founder & CEO, GROW RIDE</span>
+                            </div>
+                            <div class="quote-block">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p class="quote-text">
+                                    "At GROW RIDE, we believe financial growth and social empowerment should go hand in hand. Our mission is to take the absolute chaos out of motorcycle transit asset tracking and management, creating a bulletproof environment where local investors earn sustainable passive yields, and disciplined riders smoothly transition into independent small business owners. We aren't just shifting gears; we're accelerating lives across Cameroon."
+                                </p>
+                                <div class="quote-signature">
+                                    <strong>Driven by Trust. Anchored in Safety.</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 10. Why People Trust GROW RIDE -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center max-w-md margin-bottom-lg">
+                    <span class="badge">Built on Credibility</span>
+                    <h2 class="section-title">Why People Trust GROW RIDE</h2>
+                    <p>We treat your hard-earned investments and our riders' livelihoods with absolute professional care.</p>
+                </div>
+                <div class="grid grid-2-col gap-lg items-center">
+                    <div>
+                        <ul class="trust-list">
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Rigorous Vetting:</strong> We carefully select each rider using local background systems.</div></li>
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Continuous Training:</strong> Our academy reinforces defensive driving safety daily.</div></li>
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Preventative Care:</strong> Every asset is routinely serviced at our internal depots.</div></li>
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Monitored Repayments:</strong> Transparent digital ledgers remove collections ambiguity.</div></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="trust-list">
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Total Transparency:</strong> Regular operational audits keep all stakeholders informed.</div></li>
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Asset Safeguards:</strong> Embedded technology actively mitigates risks in the field.</div></li>
+                            <li class="reveal"><i class="fa-solid fa-circle-check"></i> <div><strong>Empowerment Driven:</strong> We turn honest riders into proud small business owners.</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Final Call to Action -->
+        <section class="section cta-section text-center text-white">
+            <div class="cta-overlay"></div>
+            <div class="container cta-content relative reveal">
+                <h2>Join the GROW RIDE Family</h2>
+                <p class="lead max-w-md mx-auto">Whether you want to invest in high-yield transport assets or become an elite, professional rider, GROW RIDE is here to help you build a better future.</p>
+                <div class="cta-buttons">
+                    <a href="#become-investor" class="btn btn-primary btn-lg">Become an Investor</a>
+                    <a href="#become-rider" class="btn btn-secondary btn-lg">Become a Rider</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 12. Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo text-white">GROW<span>RIDE</span></a>
+                <p class="margin-y-sm text-white-trans">Cameroon's premier motorcycle investment and mobility platform. Bridging community empowerment with asset security.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h6>Quick Links</h6>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#academy">Academy</a></li>
+                    <li><a href="#faqs">FAQs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h6>Programs</h6>
+                <ul>
+                    <li><a href="#investors">Investors</a></li>
+                    <li><a href="#riders">Riders</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#terms">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h6>Stay Updated</h6>
+                <p class="text-white-trans margin-bottom-sm">Subscribe to receive monthly operation updates and investment openings.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Your email address" required aria-label="Email Address">
+                    <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="container footer-bottom text-center text-white-trans">
+            <p>&copy; 2026 GROW RIDE. All Rights Reserved. Built with trust across Cameroon.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Interactivity Engine -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileNavigation();
+            initScrollAnimations();
+            initCounters();
+            initBackToTop();
+        });
+
+        function initMobileNavigation() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = navMenu.querySelectorAll('a');
+
+            if (!hamburgerBtn || !navMenu) return;
+
+            const toggleMenu = () => {
+                hamburgerBtn.classList.toggle('open');
+                navMenu.classList.toggle('open');
+            };
+
+            hamburgerBtn.addEventListener('click', toggleMenu);
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('open')) toggleMenu();
+                });
+            });
+        }
+
+        function initScrollAnimations() {
+            const targets = document.querySelectorAll('.reveal');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+                targets.forEach(target => observer.observe(target));
+            } else {
+                targets.forEach(target => target.classList.add('active'));
+            }
+        }
+
+        function initCounters() {
+            const counterSection = document.getElementById('counterSection');
+            const counters = document.querySelectorAll('.counter-number');
+            if (!counterSection || counters.length === 0) return;
+
+            let triggered = false;
+            const runCounters = () => {
+                counters.forEach(counter => {
+                    const target = parseInt(counter.getAttribute('data-target'), 10);
+                    let current = 0;
+                    const step = target / 120;
+                    const update = () => {
+                        current += step;
+                        if (current >= target) {
+                            counter.innerText = target.toLocaleString();
+                        } else {
+                            counter.innerText = Math.floor(current).toLocaleString();
+                            requestAnimationFrame(update);
+                        }
+                    };
+                    requestAnimationFrame(update);
+                });
+            };
+
+            if ('IntersectionObserver' in window) {
+                const obs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !triggered) {
+                            runCounters();
+                            triggered = true;
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+                obs.observe(counterSection);
+            } else {
+                runCounters();
+            }
+        }
+
+        function initBackToTop() {
+            const btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 500) btn.classList.add('show');
+                else btn.classList.remove('show');
+            });
+            btn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+    </script>
+</body>
+</html>

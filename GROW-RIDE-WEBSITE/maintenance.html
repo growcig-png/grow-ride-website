@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety & Maintenance | GROW RIDE</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           1. DESIGN SYSTEM & REUSABLE GLOBAL STYLES
+           ========================================================================== */
+        :root {
+            --primary-blue: #0A3D91;
+            --emerald-green: #16A34A;
+            --gold-accent: #F4B400;
+            --white: #FFFFFF;
+            --background: #F8FAFC;
+            --dark-text: #0F172A;
+            --light-text: #475569;
+            --border-color: #E2E8F0;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+            --glass: rgba(255, 255, 255, 0.75);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Layout Structure */
+        .section-padding {
+            padding: 100px 24px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Section Typography Headers */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .section-tag {
+            color: var(--emerald-green);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-desc {
+            color: var(--light-text);
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Elements / Buttons */
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #083075;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-accent {
+            background-color: var(--emerald-green);
+            color: var(--white);
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background-color: #117d37;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Navigation Header */
+        .nav-placeholder {
+            background: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--emerald-green);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Scroll Animation Base Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           2. SECTION SPECIFIC COMPONENT STYLES
+           ========================================================================== */
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #EFF6FF 0%, #F8FAFC 100%);
+            padding: 80px 24px 120px 24px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--primary-blue);
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            margin-bottom: 40px;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 480px;
+            background: linear-gradient(45deg, #1E293B, #0F172A);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        /* Grid Framework for Cards */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        /* Standard Cards */
+        .premium-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(10, 61, 145, 0.2);
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background-color: rgba(10, 61, 145, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+        }
+
+        .card-icon-green {
+            background-color: rgba(22, 163, 74, 0.06);
+            color: var(--emerald-green);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--dark-text);
+        }
+
+        .card-desc {
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        /* Policy Section (Zero Tolerance) */
+        .policy-banner {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .policy-badge {
+            background-color: #EF4444;
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .policy-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .policy-desc {
+            color: #94A3B8;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .policy-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .policy-item {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 16px 32px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .policy-item span {
+            color: #EF4444;
+            font-size: 1.2rem;
+        }
+
+        /* Checklist Component */
+        .checklist-wrapper {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            padding: 48px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            background-color: var(--background);
+            border: 1px solid transparent;
+            transition: var(--transition);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checklist-item:hover {
+            border-color: rgba(22, 163, 74, 0.3);
+            background-color: rgba(22, 163, 74, 0.02);
+        }
+
+        .checkbox-custom {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            background: var(--white);
+        }
+
+        .checkbox-custom::after {
+            content: "✓";
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: none;
+        }
+
+        .checklist-item.checked .checkbox-custom {
+            background-color: var(--emerald-green);
+            border-color: var(--emerald-green);
+        }
+
+        .checklist-item.checked .checkbox-custom::after {
+            display: block;
+        }
+
+        .checklist-item.checked span {
+            text-decoration: line-through;
+            color: var(--light-text);
+        }
+
+        /* Interactive Maintenance Timeline */
+        .timeline-section {
+            background: #F1F5F9;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline-track {
+            position: absolute;
+            left: 32px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            left: 32px;
+            top: 0;
+            width: 4px;
+            background-color: var(--primary-blue);
+            height: 0%;
+            transition: height 0.1s linear;
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 80px;
+            cursor: pointer;
+        }
+
+        .timeline-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 22px;
+            top: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 4px solid var(--border-color);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .timeline-block.active .timeline-dot {
+            border-color: var(--primary-blue);
+            background-color: var(--gold-accent);
+            transform: scale(1.2);
+        }
+
+        .timeline-box {
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .timeline-block.active .timeline-box {
+            border-left: 4px solid var(--primary-blue);
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Accordion FAQ Component */
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--background);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .faq-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+            padding: 0 24px;
+            color: var(--light-text);
+        }
+
+        .faq-item.active {
+            border-color: rgba(10, 61, 145, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item.active .faq-panel {
+            max-height: 1000px;
+            transition: max-height 0.3s cubic-bezier(1, 0, 1, 0);
+            padding-bottom: 24px;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(rgba(10, 61, 145, 0.92), rgba(10, 61, 145, 0.95)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="2"/></svg>');
+            color: var(--white);
+            text-align: center;
+            border-radius: var(--radius-lg);
+            padding: 80px 40px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn-group {
+            justify-content: center;
+        }
+
+        /* Premium Footer */
+        .footer-main {
+            background-color: #0F172A;
+            color: #94A3B8;
+            padding: 80px 24px 40px 24px;
+            font-size: 0.95rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--emerald-green);
+        }
+
+        .footer-title {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        /* Utilities */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            font-weight: bold;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==========================================================================
+           3. RESPONSIVE DESIGN MEDIA QUERIES
+           ========================================================================== */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero-content h1 {
+                font-size: 2.75rem;
+            }
+            .hero-content .btn-group {
+                justify-content: center;
+            }
+            .section-padding {
+                padding: 60px 20px;
+            }
+            .policy-banner {
+                padding: 40px 24px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none; /* Can be handled by an interactive mobile drawer if present */
+            }
+            .cta-section .btn-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .cta-section .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <nav class="nav-placeholder">
+        <div class="nav-container">
+            <a href="index.html" class="logo">GROW <span>RIDE</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="riders.html">Rider Program</a></li>
+                <li><a href="maintenance.html" style="color: var(--primary-blue); font-weight: 700;">Safety</a></li>
+                <li><a href="partners.html" class="btn btn-primary" style="padding: 8px 16px; color: white;">Invest</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h1>Safety First.<br>Every Ride.<br>Every Day.</h1>
+                <p>At GROW RIDE, we protect our riders, passengers, investors, and motorcycles through professional training, strict safety standards, and regular comprehensive maintenance checkups.</p>
+                <div class="btn-group">
+                    <a href="riders.html" class="btn btn-primary">Become a Rider</a>
+                    <a href="partners.html#contact-section" class="btn btn-secondary">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image-placeholder">
+                    <div>
+                        <span style="font-size: 4rem; display:block; margin-bottom: 16px;">🏍️</span>
+                        <p style="font-weight: 600; padding: 0 20px;">[ Premium Image: Certified Rider Wearing Full Safety Fleet Gear Beside Maintained Motorcycle ]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Our Safety Promise Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Core Foundation</span>
+                <h2 class="section-title">Our Safety Promise</h2>
+                <p class="section-desc">Safety is not optional. Every single motorcycle is strictly kept to factory-original operational conditions, and every operator undergoes rigorous continuous advanced defensive-driving certification courses.</p>
+            </div>
+            <div class="grid-3">
+                <div class="premium-card reveal">
+                    <div class="card-icon">👤</div>
+                    <h3 class="card-title">Safe Riders</h3>
+                    <p class="card-desc">Thorough background screens, professional vetting, and multi-stage road riding evaluation milestones.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">🏍️</div>
+                    <h3 class="card-title">Safe Motorcycles</h3>
+                    <p class="card-desc">Strict routine inspection intervals alongside preventive parts assembly renewals before any mechanical failure occurs.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Safe Passengers</h3>
+                    <p class="card-desc">Premium auxiliary helmets, highly visible safety vests, and explicit regulatory rules for asset carriage transit protection.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">🏘️</div>
+                    <h3 class="card-title">Safe Communities</h3>
+                    <p class="card-desc">Highly responsible neighborhood track habits minimizing public traffic disruptions and integrating harmoniously.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon-green card-icon">📈</div>
+                    <h3 class="card-title">Protected Investments</h3>
+                    <p class="card-desc">Comprehensive mechanical tracking shields your deployment capital assets and extends physical operational lifecycle windows.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Rider Safety Programme Section -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Training & Vetting</span>
+                <h2 class="section-title">Rider Safety Programme</h2>
+                <p class="section-desc">We continuously upscale operator field proficiency with formal education courses and expert supervision programs.</p>
+            </div>
+            <div class="grid-4">
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Professional Rider Training</h4>
+                    <p class="card-desc">Comprehensive baseline handling drills managed by industry fleet instruction specialists.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Defensive Driving</h4>
+                    <p class="card-desc">Advanced hazard identification maneuvers helping operators safely navigate sudden road obstacles.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Road Safety Education</h4>
+                    <p class="card-desc">Continuous cognitive theoretical workshops on route patterns and weather adjustments.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Traffic Law Compliance</h4>
+                    <p class="card-desc">Absolute adherence to state guidelines, urban velocity regulations, and path rights.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Customer Safety</h4>
+                    <p class="card-desc">Protocol instructions covering standard customer interactions, safe mounting, and dismounting rules.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Emergency Response</h4>
+                    <p class="card-desc">Instant first-aid response drills and procedural crash report scene execution workflows.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Responsible Riding</h4>
+                    <p class="card-desc">Promoting proper urban lane etiquette and respecting surrounding public transit networks.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Continuous Refresher Training</h4>
+                    <p class="card-desc">Mandatory quarterly evaluations ensuring long-term tactical proficiency on current vehicle configurations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Drug-Free & Alcohol-Free Policy Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="policy-banner reveal">
+                <span class="policy-badge">Zero Tolerance Policy</span>
+                <h2 class="policy-title">Drug-Free & Alcohol-Free Policy</h2>
+                <p class="policy-desc">GROW RIDE enforces an absolute zero-tolerance standard regarding substance usage. To protect our community and secure user trust, operators must never perform logistics, transport, or navigation activities while under the influence of:</p>
+                <div class="policy-list">
+                    <div class="policy-item"><span>🚫</span> Alcohol</div>
+                    <div class="policy-item"><span>🚫</span> Illegal Drugs</div>
+                    <div class="policy-item"><span>🚫</span> Any Substance Impairing Safe Riding Focus</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Motorcycle Maintenance Programme Section -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Asset Protection</span>
+                <h2 class="section-title">Motorcycle Maintenance Programme</h2>
+                <p class="section-desc">Regular diagnostic intervals maximize asset performance, preserve equipment resale valuations, and eliminate roadside downtime occurrences entirely.</p>
+            </div>
+            <div class="grid-4">
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Daily Motorcycle Inspection</h4>
+                    <p class="card-desc">Pre-deployment physical verification checks before track usage validation parameters clear.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Weekly Safety Checks</h4>
+                    <p class="card-desc">Deeper fluid level and micro-structural assessment evaluations handled directly at depot centers.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Regular Oil Changes</h4>
+                    <p class="card-desc">Strict scheduling keeping combustion components well lubricated, cool, and highly efficient.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Brake Inspection</h4>
+                    <p class="card-desc">Thorough pad wear measurements and fluid line system pressure flushing tracking sequences.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Tyre Inspection</h4>
+                    <p class="card-desc">Continuous surface groove tracking alongside pressure optimizations ensuring reliable wet road adhesion.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Chain Adjustment</h4>
+                    <p class="card-desc">Precise tension testing and lubrication preservation workflows ensuring seamless engine torque delivery.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Engine Servicing</h4>
+                    <p class="card-desc">Calibrations keeping internal piston structures running smoothly and fuel economies high.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Electrical System Checks</h4>
+                    <p class="card-desc">Alternator performance tracking and wire insulation evaluations guarding against shorts.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Lighting Inspection</h4>
+                    <p class="card-desc">High-output visibility testing across all signaling patterns, beams, and hazard panels.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Battery Checks</h4>
+                    <p class="card-desc">Terminal charge stability diagnostics avoiding sudden vehicle power failures.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">General Repairs</h4>
+                    <p class="card-desc">Prompt replacement of minor components with authorized OEM factory-direct replacement parts.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <h4 class="card-title">Professional Cleaning</h4>
+                    <p class="card-desc">Frequent dirt extraction preventing early corrosive chemical damage across frame components.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Daily Safety Checklist Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="checklist-wrapper reveal">
+                <div style="text-align: center; max-width: 600px; margin: 0 auto 30px auto;">
+                    <span class="section-tag">Interactive Checklist</span>
+                    <h3 class="section-title" style="font-size: 2rem;">Daily Pre-Ride Safety Verification</h3>
+                    <p class="section-desc">Riders confirm each physical checkpoint via the internal system application interface before deployment access triggers open.</p>
+                </div>
+                <div class="checklist-grid">
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Helmet & Straps</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Brakes Response</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Tyres & Pressure</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Signal Lights</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Horn Operational</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Fuel Level Sufficient</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Mirrors Alignment</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Engine Oil Levels</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Chain Slack/Slackness</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Licence & Documentation</span>
+                    </div>
+                    <div class="checklist-item" onclick="toggleChecklist(this)">
+                        <div class="checkbox-custom"></div>
+                        <span>Emergency Contact Info</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Maintenance Schedule Timeline Section -->
+    <section class="section-padding timeline-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Workflow Routine</span>
+                <h2 class="section-title">The Maintenance Lifecycle</h2>
+                <p class="section-desc">Our optimized operations workflow targets structural risk isolation. Early prevention controls protect investor capital and maximize motorcycle longevity.</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-track"></div>
+                <div class="timeline-progress" id="timelineProgress"></div>
+
+                <div class="timeline-block active" data-step="1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title" style="color: var(--primary-blue);">1. Motorcycle Inspection</h3>
+                        <p class="card-desc">Every vehicle undergoes daily digital logging tracking visual markers, structural balances, and fluid indicators.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-block" data-step="2">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title">2. Routine Servicing</h3>
+                        <p class="card-desc">Systematic engine tune-ups, air filtration renewals, and friction point adjustments executed on precise odometer counts.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-block" data-step="3">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title">3. Preventive Maintenance</h3>
+                        <p class="card-desc">Components like brake shoes, driving chains, and high-stress rubber parts are systematically replaced before mechanical fatigue sets in.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-block" data-step="4">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title">4. Repairs (If Needed)</h3>
+                        <p class="card-desc">Any micro-variance detected triggers immediate routing to qualified mechanics for rapid OEM part replacements.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-block" data-step="5">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title">5. Quality Inspection</h3>
+                        <p class="card-desc">A designated floor workshop manager independently audits performance indices via physical test runs to confirm safety clearance.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-block" data-step="6">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-box">
+                        <h3 class="card-title">6. Motorcycle Returns to Service</h3>
+                        <p class="card-desc">The asset status upgrades to active on the central network database, opening access keys for active service tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Emergency Support Section -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Rapid Response</span>
+                <h2 class="section-title">Emergency Field Support</h2>
+                <p class="section-desc">When a mechanical issue or traffic incident arises, our centralized response infrastructure immediately stabilizes operations.</p>
+            </div>
+            <div class="grid-3">
+                <div class="premium-card reveal">
+                    <div class="card-icon" style="background-color: rgba(239, 68, 68, 0.06); color: #EF4444;">🛠️</div>
+                    <h3 class="card-title">Breakdown Assistance</h3>
+                    <p class="card-desc">Dedicated mobile service units reach operators quickly to perform field fixes or swap matching backup assets.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon" style="background-color: rgba(239, 68, 68, 0.06); color: #EF4444;">📞</div>
+                    <h3 class="card-title">Accident Reporting</h3>
+                    <p class="card-desc">A direct, round-the-clock emergency line that instantly coordinates medical aid and handles insurance tracking details.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">💻</div>
+                    <h3 class="card-title">Technical Support</h3>
+                    <p class="card-desc">Remote application troubleshooting assistance resolving telemetry or digital booking lock discrepancies immediately.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">👥</div>
+                    <h3 class="card-title">Maintenance Team</h3>
+                    <p class="card-desc">Certified mechanical personnel standing by at regional maintenance hubs to handle complex vehicle issues.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon">🤝</div>
+                    <h3 class="card-title">Customer Care</h3>
+                    <p class="card-desc">Attentive desk representatives available to handle alternative travel routing for delayed passengers.</p>
+                </div>
+                <div class="premium-card reveal">
+                    <div class="card-icon-green card-icon">🚨</div>
+                    <h3 class="card-title">Emergency Contacts</h3>
+                    <p class="card-desc">Pre-programmed digital emergency link shortcuts built directly into the operator mobile application dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Why Safety Matters Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Value Proposition</span>
+                <h2 class="section-title">Why Safety Matters</h2>
+                <p class="section-desc">A strong commitment to safety is the foundation of structural scale, long-term investor protection, and community welfare.</p>
+            </div>
+            <div class="grid-4">
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">🛡️</div>
+                    <h4 class="card-title">Protects Riders</h4>
+                    <p class="card-desc">Minimizes standard occupational roadway exposures through training.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">❤️</div>
+                    <h4 class="card-title">Protects Passengers</h4>
+                    <p class="card-desc">Ensures everyone travels with peace of mind from pickup to destination.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon-green card-icon" style="margin: 0 auto 20px auto;">💼</div>
+                    <h4 class="card-title">Protects Investors</h4>
+                    <p class="card-desc">Preserves mechanical equipment values and keeps fleet operations highly reliable.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">📉</div>
+                    <h4 class="card-title">Reduces Accidents</h4>
+                    <p class="card-desc">Lowers regional collision statistics using proactive risk identification practices.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">✨</div>
+                    <h4 class="card-title">Improves Quality</h4>
+                    <p class="card-desc">Delivers a clean, professional, and reliable experience every single day.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">🤝</div>
+                    <h4 class="card-title">Builds Public Trust</h4>
+                    <p class="card-desc">Earns recognition from regional transit authorities and communities alike.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">⏳</div>
+                    <h4 class="card-title">Extends Lifespan</h4>
+                    <p class="card-desc">Keeps individual motorcycles running efficiently well beyond standard expectations.</p>
+                </div>
+                <div class="premium-card reveal" style="text-align: center;">
+                    <div class="card-icon" style="margin: 0 auto 20px auto;">🏙️</div>
+                    <h4 class="card-title">Better Communities</h4>
+                    <p class="card-desc">Promotes organized, responsible, and much safer shared public roadways.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Frequently Asked Questions Section -->
+    <section class="section-padding" style="background-color: #FFFFFF;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Safety & Maintenance Questions</h2>
+                <p class="section-desc">Clear answers to our daily fleet operational protocols and structural safety guidelines.</p>
+            </div>
+            
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How often are motorcycles serviced?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Vehicles undergo daily inspection screenings alongside structured oil changes and fluid tune-ups every 1,500 to 2,000 kilometers traveled.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Who pays for maintenance?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>GROW RIDE manages all maintenance schedules and costs from a central budget. This ensures professional mechanical care and complete peace of mind for both riders and investors.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>What happens if a motorcycle breaks down?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Our mobile assistance units are dispatched instantly. We route a nearby recovery vehicle to either repair the motorcycle on-site or provide a matching backup vehicle to avoid any service delays.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>Do riders receive safety training?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>Yes. Every operator must complete a rigorous multi-stage defensive driving certification course and participate in ongoing quarterly training workshops.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>What safety equipment is provided?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>GROW RIDE provides premium high-impact safety helmets for both riders and passengers, high-visibility protective vests, and integrated wet-weather protective gear sets.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>What happens if a rider breaks safety rules?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>We enforce a strict progressive accountability policy. Minor infractions trigger immediate mandatory training, while major safety violations or drug policy infractions result in immediate removal from the platform.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span>How do you protect investor motorcycles?</span>
+                        <div class="faq-icon">+</div>
+                    </button>
+                    <div class="faq-panel">
+                        <p>We track vehicle health continuously using smart telemetry tools, stick to strict preventive maintenance schedules, and audit operations daily to keep assets working safely and efficiently.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. Final Call to Action Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="cta-section reveal">
+                <h2>Safe Riders. Reliable Motorcycles.<br>Strong Communities.</h2>
+                <p>Safety is the foundation of everything we build. Join GROW RIDE today and discover a professional mobility ecosystem grounded in responsibility, care, and absolute financial trust.</p>
+                <div class="btn-group">
+                    <a href="riders.html" class="btn btn-accent">Become a Rider</a>
+                    <a href="partners.html" class="btn btn-primary" style="background-color: var(--white); color: var(--primary-blue);">Become an Investor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Premium Footer -->
+    <footer class="footer-main">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3>GROW <span>RIDE</span></h3>
+                <p style="margin-top: 16px;">Premium motorcycle mobility investment frameworks built alongside high-level modern structural safety safety guarantees.</p>
+            </div>
+            <div>
+                <h4 class="footer-title">Platform Options</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Framework</a></li>
+                    <li><a href="riders.html">Rider Programs</a></li>
+                    <li><a href="maintenance.html">Safety Operations</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Asset Investment</h4>
+                <ul class="footer-links">
+                    <li><a href="partners.html">Investor Portal</a></li>
+                    <li><a href="partners.html#contact-section">Capital Management</a></li>
+                    <li><a href="#">Strategic Growth</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">Legal Governance</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Deployment</a></li>
+                    <li><a href="#">Operational Mandates</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 GROW RIDE. All rights and operational titles reserved globally.</p>
+            <p>Designed with absolute structural focus.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <!-- ==========================================================================
+       4. VANILLA JAVASCRIPT LOGIC COMPONENTS
+       ========================================================================== */ -->
+    <script>
+        // --- A. Scroll Reveal Animation Engine ---
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            const triggerBottom = window.innerHeight * 0.85;
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if(elementTop < triggerBottom) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal); // Trigger on fresh page load
+
+        // --- B. Interactive Checklist Toggle Handler ---
+        function toggleChecklist(item) {
+            item.classList.toggle('checked');
+        }
+
+        // --- C. Interactive Maintenance Timeline Progress Tracker ---
+        const timelineBlocks = document.querySelectorAll('.timeline-block');
+        const timelineProgress = document.getElementById('timelineProgress');
+
+        function updateTimeline() {
+            let lastActiveIndex = 0;
+            const triggerPoint = window.innerHeight * 0.5;
+
+            timelineBlocks.forEach((block, index) => {
+                const rect = block.getBoundingClientRect();
+                // If top of the block passes middle of viewport, activate it
+                if (rect.top < triggerPoint) {
+                    block.classList.add('active');
+                    lastActiveIndex = index;
+                } else {
+                    block.classList.remove('active');
+                }
+            });
+
+            // Calculate progress percentage bar line height
+            const totalBlocks = timelineBlocks.length;
+            if (totalBlocks > 1) {
+                const percentage = (lastActiveIndex / (totalBlocks - 1)) * 100;
+                timelineProgress.style.height = percentage + '%';
+            }
+        }
+
+        window.addEventListener('scroll', updateTimeline);
+        window.addEventListener('load', updateTimeline);
+
+        // --- D. Accordion Toggle Action ---
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const trigger = item.querySelector('.faq-trigger');
+            trigger.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+                
+                // Close all other open items first
+                faqItems.forEach(i => i.classList.remove('active'));
+                
+                // If it wasn't open, open it
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- E. Back-to-Top Indicator Handler ---
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
