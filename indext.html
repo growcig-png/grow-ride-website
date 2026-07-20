@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GROW RIDE is Cameroon's premium professionally managed motorcycle investment & mobility platform. Connecting investors and commercial riders through Balance & Own.">
+    <title>GROW RIDE | Motorcycle Investment & Mobility Platform</title>
+    
+    <!-- Premium Typography Selection -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Premium Icon System FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- EMBEDDED STYLING MATRIX -->
+    <style>
+        /* ==========================================================================
+           Brand Colors & Global Architecture System
+           ========================================================================== */
+        :root {
+            --primary-blue: #0A3D91;
+            --emerald-green: #16A34A;
+            --gold-accent: #F4B400;
+            --white: #FFFFFF;
+            --background: #F8FAFC;
+            --dark-text: #0F172A;
+            --gray-text: #64748B;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --shadow-premium: 0 20px 40px -10px rgba(15, 23, 42, 0.08), 0 10px 20px -5px rgba(15, 23, 42, 0.03);
+            --radius-premium: 18px;
+            --transition-smooth: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ==========================================================================
+           Base Elements Reset
+           ========================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--dark-text);
+        }
+
+        body {
+            overflow-x: hidden;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-smooth);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           Structural Layout & Reusable Grid Helpers
+           ========================================================================== */
+        .container {
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .max-width-md { max-width: 800px; margin-left: auto; margin-right: auto; }
+        .section-spacing { padding: 120px 0; }
+        .bg-gray-variant { background-color: #F1F5F9; }
+        .text-center { text-align: center; }
+        .text-white { color: var(--white); }
+        .accent-color { color: var(--gold-accent) !important; }
+
+        /* Section Typographic Architecture */
+        .section-tag {
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--emerald-green);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--dark-text);
+        }
+
+        .section-lead-paragraph {
+            font-size: 19px;
+            color: var(--gray-text);
+            line-height: 1.75;
+        }
+
+        /* Button UI Toolkit */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border-radius: 40px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-blue), #1E40AF);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(10, 61, 145, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(10, 61, 145, 0.4);
+        }
+
+        .btn-emerald {
+            background: linear-gradient(135deg, var(--emerald-green), #15803D);
+            color: var(--white);
+            box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25);
+        }
+
+        .btn-emerald:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn-lg { padding: 18px 36px; font-size: 16px; }
+        .btn-sm { padding: 10px 22px; font-size: 14px; }
+
+        /* Premium Glassmorphism Utility Definition */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-premium);
+        }
+
+        /* ==========================================================================
+           Full Loading Screen System
+           ========================================================================== */
+        .loader-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--background);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .loader-spinner {
+            width: 55px;
+            height: 55px;
+            border: 5px solid #E2E8F0;
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: rotateLoop 1s infinite linear;
+        }
+        @keyframes rotateLoop { to { transform: rotate(360deg); } }
+
+        /* ==========================================================================
+           Premium Navigation Header Layout
+           ========================================================================== */
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 28px 0;
+            transition: var(--transition-smooth);
+        }
+
+        .sticky-nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 16px 0;
+            box-shadow: var(--shadow-soft);
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .sticky-nav.scrolled .nav-item {
+            color: var(--dark-text);
+        }
+
+        .sticky-nav.scrolled .menu-bar {
+            background-color: var(--dark-text);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        .logo-primary { color: var(--primary-blue); }
+        .logo-accent { color: var(--emerald-green); }
+        .logo-white { color: var(--white); }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-item {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 14.5px;
+        }
+        .nav-item:hover, .nav-item.active {
+            color: var(--gold-accent) !important;
+        }
+
+        .nav-cta-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 12px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        .mobile-menu-toggle .menu-bar {
+            width: 26px;
+            height: 3px;
+            background-color: var(--white);
+            transition: var(--transition-smooth);
+            border-radius: 2px;
+        }
+
+        /* ==========================================================================
+           Hero Layout & Micro-Interaction Cards
+           ========================================================================== */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .hero-image-container {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+        }
+        .hero-gradient-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(10, 61, 145, 0.78));
+        }
+
+        .hero-layout-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 48px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text-content {
+            color: var(--white);
+        }
+
+        .hero-badge {
+            background: rgba(22, 163, 74, 0.2);
+            border: 1px solid rgba(22, 163, 74, 0.4);
+            color: #4ADE80;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .hero-text-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .highlight-gradient {
+            background: linear-gradient(135deg, #F4B400, #F59E0B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text-content p {
+            font-size: 18px;
+            opacity: 0.92;
+            margin-bottom: 44px;
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        .hero-button-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        /* Floating Metrics Display Modules */
+        .hero-floating-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .hero-floating-cards .glass-card {
+            padding: 28px;
+            border-radius: var(--radius-premium);
+        }
+
+        .card-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(10, 61, 145, 0.08);
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .hero-floating-cards h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .hero-floating-cards p {
+            font-size: 13px;
+            color: var(--gray-text);
+            line-height: 1.45;
+        }
+
+        .floating-animation {
+            animation: driftMotion 6s ease-in-out infinite alternate;
+            animation-delay: var(--float-delay);
+        }
+        @keyframes driftMotion {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-16px); }
+        }
+
+        /* ==========================================================================
+           Two Paths Structural Flex Layout
+           ========================================================================== */
+        .paths-flex-layout {
+            display: flex;
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .path-card-item {
+            flex: 1;
+            background-color: var(--white);
+            border-radius: var(--radius-premium);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid #E2E8F0;
+            transition: var(--transition-smooth);
+        }
+
+        .path-card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .path-image-wrapper {
+            height: 280px;
+            overflow: hidden;
+        }
+        .path-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition-smooth);
+        }
+        .path-card-item:hover .path-image-wrapper img {
+            transform: scale(1.04);
+        }
+
+        .path-card-body {
+            padding: 44px;
+        }
+        .path-card-body h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .path-card-body p {
+            color: var(--gray-text);
+            margin-bottom: 36px;
+            font-size: 15.5px;
+            line-height: 1.7;
+        }
+
+        /* ==========================================================================
+           Features Component Grid Setup
+           ========================================================================== */
+        .features-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 36px 28px;
+            border-radius: var(--radius-premium);
+            border: 1px solid #E2E8F0;
+            transition: var(--transition-smooth);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-premium);
+        }
+
+        .feature-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 24px;
+        }
+        .bg-blue-light { background: rgba(10, 61, 145, 0.08); color: var(--primary-blue); }
+        .bg-emerald-light { background: rgba(22, 163, 74, 0.08); color: var(--emerald-green); }
+        .bg-gold-light { background: rgba(244, 180, 0, 0.12); color: #B45309; }
+
+        .feature-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            font-size: 14px;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           Services Grid Configuration
+           ========================================================================== */
+        .services-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .services-grid-layout .service-box {
+            padding: 36px 28px;
+            border-radius: var(--radius-premium);
+            transition: var(--transition-smooth);
+        }
+        .services-grid-layout .service-box:hover {
+            background: var(--white);
+            box-shadow: var(--shadow-premium);
+            border-color: transparent;
+        }
+
+        .service-box h3 {
+            font-size: 18px;
+            color: var(--primary-blue);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .service-box p {
+            font-size: 14px;
+            color: var(--gray-text);
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           Functional Timeline Presentation Layer
+           ========================================================================== */
+        .timeline-wrapper {
+            position: relative;
+            max-width: 860px;
+            margin: 60px auto 0;
+            padding-left: 48px;
+        }
+        .timeline-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 5px;
+            bottom: 5px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--emerald-green));
+            border-radius: 4px;
+        }
+
+        .timeline-step {
+            position: relative;
+            margin-bottom: 44px;
+        }
+        .timeline-step:last-child { margin-bottom: 0; }
+
+        .timeline-marker {
+            position: absolute;
+            left: -48px;
+            top: 2px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--white);
+            box-shadow: var(--shadow-soft);
+            z-index: 2;
+        }
+        .timeline-step:nth-child(even) .timeline-marker {
+            background-color: var(--emerald-green);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 28px 36px;
+            border-radius: var(--radius-premium);
+            border: 1px solid #E2E8F0;
+        }
+        .timeline-content h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-content p {
+            font-size: 14.5px;
+            color: var(--gray-text);
+        }
+
+        /* ==========================================================================
+           Impact Metric Counters
+           ========================================================================== */
+        .impact-section {
+            background: linear-gradient(135deg, #071E43 0%, #05255C 100%);
+        }
+
+        .counters-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .counter-item-card {
+            padding: 24px;
+            text-align: center;
+        }
+        .counter-value {
+            font-size: 58px;
+            font-weight: 700;
+            color: var(--gold-accent);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        .counter-item-card p {
+            font-size: 16.5px;
+            color: #94A3B8;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           Testimonial Slider Architecture
+           ========================================================================== */
+        .slider-viewport-container {
+            max-width: 800px;
+            margin: 60px auto 0;
+            background: var(--white);
+            padding: 64px 48px;
+            border-radius: var(--radius-premium);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            position: relative;
+            height: 160px;
+        }
+
+        .slider-slide-item {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(40px);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+            text-align: center;
+        }
+        .slider-slide-item.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .testimonial-quote {
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 500;
+            line-height: 1.6;
+            color: var(--dark-text);
+            margin-bottom: 28px;
+        }
+
+        .testimonial-profile h4 {
+            font-size: 16.5px;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        .testimonial-profile span {
+            font-size: 13.5px;
+            color: var(--gray-text);
+        }
+
+        .slider-controls-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+        .bullet-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #CBD5E1;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .bullet-dot.active {
+            background-color: var(--primary-blue);
+            width: 26px;
+            border-radius: 6px;
+        }
+
+        /* ==========================================================================
+           Final Conversion Call to Action Section
+           ========================================================================== */
+        .final-cta-section {
+            background: linear-gradient(rgba(22, 163, 74, 0.88), rgba(15, 23, 42, 0.94)), url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .final-cta-section h2 {
+            font-size: 46px;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 24px;
+        }
+        .final-cta-section p {
+            font-size: 19px;
+            opacity: 0.92;
+            margin-bottom: 44px;
+        }
+        .cta-actions-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* ==========================================================================
+           Corporate Footer Network Layout
+           ========================================================================== */
+        .corporate-footer {
+            background-color: #0B1329;
+            color: #94A3B8;
+            padding: 80px 0 32px;
+            border-top: 1px solid #1E293B;
+        }
+
+        .footer-layout-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 0.8fr 0.8fr 1.4fr;
+            gap: 40px;
+            padding-bottom: 56px;
+            border-bottom: 1px solid #1E293B;
+        }
+
+        .footer-brand-summary .nav-logo { margin-bottom: 24px; display: inline-block; }
+        .footer-brand-summary p { font-size: 14px; line-height: 1.65; margin-bottom: 28px; }
+
+        .footer-social-media { display: flex; gap: 12px; }
+        .footer-social-media a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1E293B;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        .footer-social-media a:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-4px);
+        }
+
+        .footer-links-column h3, .footer-newsletter-box h3 {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .footer-links-column ul { display: flex; flex-direction: column; gap: 14px; }
+        .footer-links-column ul a { font-size: 14.5px; }
+        .footer-links-column ul a:hover { color: var(--white); padding-left: 4px; }
+
+        .footer-newsletter-box p { font-size: 14.5px; margin-bottom: 24px; }
+        .newsletter-input-form {
+            display: flex;
+            gap: 8px;
+            background-color: #1E293B;
+            padding: 6px;
+            border-radius: 40px;
+            border: 1px solid #334155;
+        }
+        .newsletter-input-form input {
+            background: transparent;
+            border: none;
+            padding: 0 16px;
+            color: var(--white);
+            font-size: 14px;
+            width: 100%;
+        }
+        .newsletter-input-form input:focus { outline: none; }
+
+        .footer-bottom-bar { padding-top: 32px; font-size: 13.5px; color: #57657A; }
+
+        /* ==========================================================================
+           Floating Core UI Components & JS Hooks
+           ========================================================================== */
+        .back-to-top-trigger {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            box-shadow: var(--shadow-premium);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            z-index: 99;
+        }
+        .back-to-top-trigger.visible { opacity: 1; visibility: visible; }
+
+        /* Scroll Reveal System */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           Responsive Breakpoints Optimization Layouts
+           ========================================================================== */
+        @media (max-width: 1140px) {
+            .features-grid-layout, .services-grid-layout { grid-template-columns: repeat(2, 1fr); }
+            .footer-layout-grid { grid-template-columns: repeat(2, 1fr); gap: 48px; }
+        }
+
+        @media (max-width: 991px) {
+            .section-spacing { padding: 90px 0; }
+            .hero-section { padding-top: 120px; min-height: auto; }
+            .hero-layout-grid { grid-template-columns: 1fr; text-align: center; gap: 56px; }
+            .hero-text-content h1 { font-size: 44px; }
+            .hero-text-content p { margin-left: auto; margin-right: auto; }
+            .hero-button-group { justify-content: center; }
+            .hero-floating-cards { max-width: 640px; margin: 0 auto; }
+            
+            .paths-flex-layout { flex-direction: column; gap: 32px; }
+            .section-title { font-size: 34px; }
+
+            /* Mobile Drawer Menu Mechanics */
+            .mobile-menu-toggle { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 380px;
+                height: 100vh;
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 110px 40px;
+                box-shadow: var(--shadow-premium);
+                transition: var(--transition-smooth);
+                overflow-y: auto;
+                gap: 28px;
+            }
+            .nav-links.active { right: 0; }
+            .nav-item { color: var(--dark-text); font-size: 16px; width: 100%; display: block; }
+            .nav-cta-wrapper { flex-direction: column; width: 100%; margin-left: 0; margin-top: 16px; }
+            .nav-cta-wrapper .btn { width: 100%; }
+            
+            .sticky-nav:not(.scrolled) .nav-item { color: var(--dark-text); }
+            .sticky-nav:not(.scrolled) .menu-bar { background-color: var(--white); }
+
+            /* Drawer Active Button Morphing States */
+            .mobile-menu-toggle.active .menu-bar:nth-child(1) { transform: translateY(9px) rotate(45deg); background-color: var(--dark-text) !important; }
+            .mobile-menu-toggle.active .menu-bar:nth-child(2) { opacity: 0; }
+            .mobile-menu-toggle.active .menu-bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); background-color: var(--dark-text) !important; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text-content h1 { font-size: 34px; }
+            .hero-button-group { flex-direction: column; }
+            .hero-floating-cards { grid-template-columns: 1fr; }
+            .counters-grid-layout { grid-template-columns: 1fr; gap: 24px; }
+            .features-grid-layout, .services-grid-layout { grid-template-columns: 1fr; }
+            .path-card-body { padding: 28px; }
+            .slider-viewport-container { padding: 44px 24px; }
+            .testimonial-quote { font-size: 17px; }
+            .cta-actions-row { flex-direction: column; }
+            .final-cta-section h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Professional Loading Screen Overlay -->
+    <div id="loader-screen" class="loader-overlay">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Premium Sticky Navigation Header -->
+    <nav class="sticky-nav" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-primary">GROW</span><span class="logo-accent">RIDE</span>
+            </a>
+            
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menu-toggle">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-item active">Home</a></li>
+                <li><a href="about.html" class="nav-item">About Us</a></li>
+                <li><a href="investors.html" class="nav-item">Investors</a></li>
+                <li><a href="become-rider.html" class="nav-item">Become a Rider</a></li>
+                <li><a href="academy.html" class="nav-item">Rider Academy</a></li>
+                <li><a href="safety.html" class="nav-item">Safety & Maintenance</a></li>
+                <li><a href="faqs.html" class="nav-item">FAQs</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+                <li class="nav-cta-wrapper">
+                    <a href="investors.html#apply" class="btn btn-primary btn-sm">Become an Investor</a>
+                    <a href="become-rider.html#apply" class="btn btn-emerald btn-sm">Become a Rider</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Full-Screen Hero Section -->
+    <header class="hero-section">
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=1920&q=80" alt="Commercial motorcycle riders carrying passengers in Cameroon setting" class="hero-img">
+            <div class="hero-gradient-overlay"></div>
+        </div>
+        
+        <div class="container hero-layout-grid">
+            <div class="hero-text-content reveal-on-scroll">
+                <span class="hero-badge"><i class="fa-solid fa-bolt-lightning"></i> Managed Asset Platform</span>
+                <h1>Invest in Mobility.<br>Empower Riders.<br><span class="highlight-gradient">Build Communities.</span></h1>
+                <p>GROW RIDE connects investors with disciplined commercial riders through a professionally managed Balance & Own programme. We recruit, train, monitor, and support riders while maintaining every motorcycle to protect investor assets and create sustainable opportunities across Cameroon.</p>
+                <div class="hero-button-group">
+                    <a href="investors.html#apply" class="btn btn-primary btn-lg">Become an Investor</a>
+                    <a href="become-rider.html#apply" class="btn btn-emerald btn-lg">Become a Rider</a>
+                </div>
+            </div>
+
+            <!-- Floating Info Cards Sub-System -->
+            <div class="hero-floating-cards">
+                <div class="glass-card floating-animation" style="--float-delay: 0s;">
+                    <div class="card-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Rider Academy</h3>
+                    <p>Comprehensive regulatory and vetting guidelines</p>
+                </div>
+                <div class="glass-card floating-animation" style="--float-delay: 1.5s;">
+                    <div class="card-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Defensive Driving</h3>
+                    <p>Advanced real-world safety certification updates</p>
+                </div>
+                <div class="glass-card floating-animation" style="--float-delay: 0.8s;">
+                    <div class="card-icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3>Fleet Maintenance</h3>
+                    <p>Rigorous internal mechanical servicing standards</p>
+                </div>
+                <div class="glass-card floating-animation" style="--float-delay: 2.2s;">
+                    <div class="card-icon-box"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>Balance & Own</h3>
+                    <p>Structured legal framework towards title ownership</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Company Introduction Section -->
+    <section class="intro-section section-spacing bg-gray-variant">
+        <div class="container text-center max-width-md reveal-on-scroll">
+            <span class="section-tag">Institutional Ecosystem</span>
+            <h2 class="section-title">More Than A Leasing Company</h2>
+            <p class="section-lead-paragraph">
+                GROW RIDE operates an asset-management ecosystem that stabilizes urban transport networks while de-risking informal credit markets. By combining technical rider screening, strict training workflows, mandatory asset tracking, and comprehensive vehicle mechanics workshops under one roof, we achieve high asset safety and predictable revenue loops that transform individual fields of work into thriving localized businesses.
+            </p>
+        </div>
+    </section>
+
+    <!-- Two Paths. One Mission. Section -->
+    <section class="paths-section section-spacing">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag">Dual Execution Modules</span>
+                <h2 class="section-title">Two Paths. One Mission.</h2>
+            </div>
+            
+            <div class="paths-flex-layout">
+                <!-- Investor Pathway -->
+                <div class="path-card-item reveal-on-scroll">
+                    <div class="path-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Investor portfolio tracking analysis analytics" loading="lazy" class="lazy-load">
+                    </div>
+                    <div class="path-card-body">
+                        <h3>For Strategic Investors</h3>
+                        <p>Purchase high-utility transport assets through an optimized processing pool. GROW RIDE eliminates capital bottlenecks by deploying complete driver assignment protocols, handling strict on-field asset security parameters, processing transparent micro-remittances, and giving you live updates on your portfolio performance through clear metrics reporting.</p>
+                        <a href="investors.html" class="btn btn-primary">Become an Investor</a>
+                    </div>
+                </div>
+
+                <!-- Rider Pathway -->
+                <div class="path-card-item reveal-on-scroll">
+                    <div class="path-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80" alt="Professional motorcycle riders operations field" loading="lazy" class="lazy-load">
+                    </div>
+                    <div class="path-card-body">
+                        <h3>For Aspiring Drivers</h3>
+                        <p>Gain access to high-performance assets, complete safety equipment, and comprehensive route management certifications. Serve local transportation demand safely on localized routes, generate dependable income, and fulfill standard micro-payment goals to achieve full legal title ownership of your motorcycle.</p>
+                        <a href="become-rider.html" class="btn btn-emerald">Apply as Rider</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose GROW RIDE Section -->
+    <section class="why-section section-spacing bg-gray-variant">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag">Operational Excellence</span>
+                <h2 class="section-title">Why Choose GROW RIDE</h2>
+            </div>
+
+            <div class="features-grid-layout">
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-blue-light"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>Professional Rider Academy</h3>
+                    <p>In-depth continuous background check processes, customer etiquette lessons, and urban rule updates.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-emerald-light"><i class="fa-solid fa-user-shield"></i></div>
+                    <h3>Defensive Driving Training</h3>
+                    <p>Rigorous active navigation training pipelines that improve transit safety and prolong asset lifespan indicators.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-gold-light"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>Drug & Alcohol-Free Policy</h3>
+                    <p>Zero tolerance compliance metrics maintained using randomized wellness evaluations and route testing.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-blue-light"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h3>Routine Maintenance</h3>
+                    <p>Preventative engineering inspections scheduled at internal depots using genuine component supply chains.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-emerald-light"><i class="fa-solid fa-satellite-dish"></i></div>
+                    <h3>Fleet Management</h3>
+                    <p>24/7 active telemetry mapping systems built out with integrated hardware kill-switches and field supervisor support.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-gold-light"><i class="fa-solid fa-chart-column"></i></div>
+                    <h3>Investor Transparency</h3>
+                    <p>Clean dashboard accessibility detailing payout events, depreciation logs, and direct account statement generations.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-blue-light"><i class="fa-solid fa-phone-volume"></i></div>
+                    <h3>Customer Support</h3>
+                    <p>Active multi-channel infrastructure for rapid incident response management for all community members.</p>
+                </div>
+                <div class="feature-card reveal-on-scroll">
+                    <div class="feature-icon bg-emerald-light"><i class="fa-solid fa-users-gear"></i></div>
+                    <h3>Community Development</h3>
+                    <p>Transforming informal transport lines into high-yield financial options and formal employment models.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section class="services-section section-spacing">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag">Core Value Lines</span>
+                <h2 class="section-title">Our Dedicated Services</h2>
+            </div>
+
+            <div class="services-grid-layout">
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Balance & Own Programme</h3>
+                    <p>A legally verified micro-leasing architecture that safely shifts asset titles to active drivers when targets are reached.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Motorcycle Investment</h3>
+                    <p>Institutional deployment pathways for deploying private capital safely across emerging market logistics lines.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Rider Recruitment</h3>
+                    <p>Strict structural screening, local leadership verification steps, and intensive safety assessment filters.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Rider Training</h3>
+                    <p>A multi-phased custom academy program focused on risk avoidance, customer management, and digital records systems.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Preventive Maintenance</h3>
+                    <p>Automated software alarms routing vehicles to service centers before parts experience typical severe operational wear.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Fleet Management</h3>
+                    <p>Live geofencing setups tracking speeds, operational behaviors, and transit patterns on a centralized platform.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Repayment Monitoring</h3>
+                    <p>Simplified mobile wallet accounting paths that post directly to secure digital asset balances every day.</p>
+                </div>
+                <div class="service-box glass-card reveal-on-scroll">
+                    <h3>Investor Reporting</h3>
+                    <p>Quarterly auditing logs displaying fleet operation states, depreciation charts, and revenue distribution trends.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-section section-spacing bg-gray-variant">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag">System Timelines</span>
+                <h2 class="section-title">How It Works</h2>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Investor Purchase</h3>
+                        <p>Capital partners fund verified assets through our secure institutional application gateway.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Procurement & Prep</h3>
+                        <p>GROW RIDE completes logistics validation, telemetry integration, and official public route licensing steps.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Rider Selection</h3>
+                        <p>Vetted, background-checked operators are matched based on past performance rankings in our database.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Academy Training</h3>
+                        <p>Drivers finish complete risk mitigation, defensive handling, and mobile tracking platform modules.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>Motorcycle Deployment</h3>
+                        <p>Assets launch onto commercial transport paths alongside certified safety uniforms and protective gear.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-content">
+                        <h3>Income Generation</h3>
+                        <p>Operators answer daily customer ride requests, keeping transportation networks safe and growing their earnings.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">7</div>
+                    <div class="timeline-content">
+                        <h3>Repayment Monitoring</h3>
+                        <p>Weekly mobile money revenue targets sync smoothly with secure individual ledger profiles.</p>
+                    </div>
+                </div>
+                <div class="timeline-step reveal-on-scroll">
+                    <div class="timeline-marker">8</div>
+                    <div class="timeline-content">
+                        <h3>Ownership Transfer</h3>
+                        <p>Upon completing contract benchmarks, the asset title deeds shift directly to the operator, achieving the goal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Impact Section -->
+    <section class="impact-section section-spacing text-white">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag accent-color">Ecosystem Transformation</span>
+                <h2 class="section-title text-white">Our Community Impact</h2>
+            </div>
+
+            <div class="counters-grid-layout">
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="1500">0</div>
+                    <p>Riders Empowered</p>
+                </div>
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="1200">0</div>
+                    <p>Motorcycles Deployed</p>
+                </div>
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="450">0</div>
+                    <p>Investors Served</p>
+                </div>
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="25">0</div>
+                    <p>Communities Reached</p>
+                </div>
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="350">0</div>
+                    <p>Training Sessions</p>
+                </div>
+                <div class="counter-item-card reveal-on-scroll">
+                    <div class="counter-value" data-target="2200">0</div>
+                    <p>Jobs Created</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section section-spacing bg-gray-variant">
+        <div class="container">
+            <div class="text-center reveal-on-scroll">
+                <span class="section-tag">Ecosystem Voices</span>
+                <h2 class="section-title">Testimonials</h2>
+            </div>
+
+            <div class="slider-viewport-container reveal-on-scroll">
+                <div class="slider-track" id="testimonial-track">
+                    <!-- Slide 1 -->
+                    <div class="slider-slide-item active">
+                        <p class="testimonial-quote">"Investing through GROW RIDE took away all the stress of operational logistics. Payouts arrive like clockwork, and I can monitor asset states directly from my portfolio panel."</p>
+                        <div class="testimonial-profile">
+                            <h4>Dr. Collins Ndi</h4>
+                            <span>Asset Investor (Douala)</span>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slider-slide-item">
+                        <p class="testimonial-quote">"The Rider Academy completely changed how I think about safety. Today, I earn a stable income and am only months away from owning this motorcycle completely."</p>
+                        <div class="testimonial-profile">
+                            <h4>Amadou Bouba</h4>
+                            <span>Certified Operator (Yaoundé)</span>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slider-slide-item">
+                        <p class="testimonial-quote">"Our transport links are significantly safer now. By bringing organization to the motorcycle sector, GROW RIDE has brought economic stability to our communities."</p>
+                        <div class="testimonial-profile">
+                            <h4>Hon. Marie Therese Atangana</h4>
+                            <span>Community Leader (Bamenda)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-controls-dots" id="slider-dots">
+                    <span class="bullet-dot active" data-slide-index="0"></span>
+                    <span class="bullet-dot" data-slide-index="1"></span>
+                    <span class="bullet-dot" data-slide-index="2"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action Section -->
+    <section class="final-cta-section section-spacing text-white text-center">
+        <div class="container max-width-md reveal-on-scroll">
+            <h2>Driving Opportunity.<br>Building Ownership.<br><span class="accent-color">Creating Impact.</span></h2>
+            <p>Whether you want to build passive portfolio returns through an impactful asset class or start your journey toward direct business ownership, GROW RIDE provides the structural ecosystem you need.</p>
+            <div class="cta-actions-row">
+                <a href="investors.html#apply" class="btn btn-primary btn-lg">Become an Investor</a>
+                <a href="become-rider.html#apply" class="btn btn-emerald btn-lg">Become a Rider</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Corporate Footer System -->
+    <footer class="corporate-footer">
+        <div class="container footer-layout-grid">
+            <div class="footer-brand-summary">
+                <a href="index.html" class="nav-logo">
+                    <span class="logo-white">GROW</span><span class="logo-accent">RIDE</span>
+                </a>
+                <p>Transforming urban transit systems in Cameroon through structured asset logistics, operator safety workflows, and long-term ownership tracks.</p>
+                <div class="footer-social-media">
+                    <a href="https://facebook.com" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://whatsapp.com" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="investors.html">Investors</a></li>
+                    <li><a href="become-rider.html">Become a Rider</a></li>
+                    <li><a href="academy.html">Rider Academy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-column">
+                <h3>Systems & Support</h3>
+                <ul>
+                    <li><a href="safety.html">Safety & Maintenance</a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter-box">
+                <h3>Stay Informed</h3>
+                <p>Subscribe to receive quarterly fleet operation metrics and ecosystem milestone updates.</p>
+                <form class="newsletter-input-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Your corporate email address" required aria-label="Newsletter email">
+                    <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar text-center">
+            <p>&copy; 2026 GROW RIDE. All rights reserved. Managed mobility investments across West Africa.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button Component -->
+    <button id="scroll-to-top" class="back-to-top-trigger" aria-label="Scroll back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- CORE JAVASCRIPT MECHANICS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Initial Site Loader Release Process
+            const loaderScreen = document.getElementById('loader-screen');
+            if (loaderScreen) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        loaderScreen.style.opacity = '0';
+                        setTimeout(() => loaderScreen.style.display = 'none', 500);
+                    }, 250);
+                });
+            }
+
+            // 2. Navigation Scroll Tracking & Mobile Hamburger Drawer Mechanics
+            const navbar = document.getElementById('navbar');
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinksContainer = document.getElementById('nav-links');
+            const navIndividualLinks = document.querySelectorAll('.nav-item');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 40) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            if (menuToggle && navLinksContainer) {
+                menuToggle.addEventListener('click', () => {
+                    menuToggle.classList.toggle('active');
+                    navLinksContainer.classList.toggle('active');
+                });
+
+                navIndividualLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuToggle.classList.remove('active');
+                        navLinksContainer.classList.remove('active');
+                    });
+                });
+            }
+
+            // 3. Native Intersection Observer Engine for Scroll Reveal Animations
+            const elementsToReveal = document.querySelectorAll('.reveal-on-scroll');
+            const revealConfiguration = {
+                threshold: 0.12,
+                rootMargin: '0px 0px -20px 0px'
+            };
+
+            const scrollObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, revealConfiguration);
+
+            elementsToReveal.forEach(el => scrollObserver.observe(el));
+
+            // 4. High-Performance Rolling Counter Analytics 
+            const metricCounterNumbers = document.querySelectorAll('.counter-value');
+            let hasCounterRunStarted = false;
+
+            const executeRollingCounters = () => {
+                metricCounterNumbers.forEach(counter => {
+                    const finalNumericalTarget = parseInt(counter.getAttribute('data-target'), 10);
+                    const continuousDuration = 2200; 
+                    const totalStepsCount = continuousDuration / 16; 
+                    const valueIncrementStep = finalNumericalTarget / totalStepsCount;
+                    let initialStartValue = 0;
+
+                    const incrementSequence = () => {
+                        initialStartValue += valueIncrementStep;
+                        if (initialStartValue < finalNumericalTarget) {
+                            counter.innerText = Math.floor(initialStartValue) + '+';
+                            requestAnimationFrame(incrementSequence);
+                        } else {
+                            counter.innerText = finalNumericalTarget.toLocaleString() + '+';
+                        }
+                    };
+                    incrementSequence();
+                });
+            };
+
+            if (metricCounterNumbers.length > 0) {
+                const impactSectionTrigger = document.querySelector('.impact-section');
+                const counterTrackingObserver = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting && !hasCounterRunStarted) {
+                        hasCounterRunStarted = true;
+                        executeRollingCounters();
+                    }
+                }, { threshold: 0.25 });
+                counterTrackingObserver.observe(impactSectionTrigger);
+            }
+
+            // 5. Enterprise Testimonial Slider System
+            const testimonialSlides = document.querySelectorAll('.slider-slide-item');
+            const bulletNavigationDots = document.querySelectorAll('.slider-controls-dots .bullet-dot');
+            let activeSlideIndex = 0;
+            let autoRotateSliderTimer;
+
+            const navigateToSlide = (index) => {
+                testimonialSlides.forEach(slide => slide.classList.remove('active'));
+                bulletNavigationDots.forEach(dot => dot.classList.remove('active'));
+                
+                testimonialSlides[index].classList.add('active');
+                bulletNavigationDots[index].classList.add('active');
+                activeSlideIndex = index;
+            };
+
+            const runAutoRotation = () => {
+                let nextComputedIndex = (activeSlideIndex + 1) % testimonialSlides.length;
+                navigateToSlide(nextComputedIndex);
+            };
+
+            const activateSliderTimer = () => {
+                autoRotateSliderTimer = setInterval(runAutoRotation, 6500); 
+            };
+
+            if (testimonialSlides.length > 0) {
+                activateSliderTimer();
+
+                bulletNavigationDots.forEach(bullet => {
+                    bullet.addEventListener('click', (event) => {
+                        clearInterval(autoRotateSliderTimer);
+                        const explicitIndexTarget = parseInt(event.target.getAttribute('data-slide-index'), 10);
+                        navigateToSlide(explicitIndexTarget);
+                        activateSliderTimer();
+                    });
+                });
+            }
+
+            // 6. Scroll-to-Top Trigger Interface Button
+            const scrollToTopBtn = document.getElementById('scroll-to-top');
+            if (scrollToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 650) {
+                        scrollToTopBtn.classList.add('visible');
+                    } else {
+                        scrollToTopBtn.classList.remove('visible');
+                    }
+                });
+
+                scrollToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
